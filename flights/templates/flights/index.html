@@ -1,0 +1,31 @@
+{% extends 'flights/layout.html' %}
+{% block body %}
+
+{% if flights %}
+    <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>Duration (min)</th>
+                <th>Check Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for flight in flights %}
+                <tr>
+                    <td>{{ flight.origin }}</td>
+                    <td>{{ flight.destination }}</td>
+                    <td>{{ flight.duration }}</td>
+                    <td><a href="{% url 'flights:result' flight.id %}">Details</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <h2>No flights available</h2>
+{% endif %}
+<a href="{% url 'flights:add' %}">Add Flights Details</a><br>
+<a href="{% url 'flights:addpassenger' %}">Add Passenger Details</a><br>
+<a href="{% url 'flights:search' %}">Search Flights Details</a>
+{% endblock %}

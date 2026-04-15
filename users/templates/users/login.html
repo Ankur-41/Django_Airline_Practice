@@ -1,0 +1,14 @@
+{% extends 'users/layout.html' %}
+{% block body %}
+<form action="{% url 'users:login' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Username">
+    <input type="password" name="password" placeholder="Passowrd">
+    <input type="submit" value="login">
+</form>
+{% if message %}
+    <div>{{ message }}</div>
+{% endif %}
+<a href="{% url 'users:register' %}">Register</a>
+
+{% endblock %}

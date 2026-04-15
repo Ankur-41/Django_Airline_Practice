@@ -1,0 +1,14 @@
+{% extends 'flights/layout.html' %}
+{% block body %}
+<h2>Enter Your Flight Details</h2>
+<form action="{% url 'flights:add' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit">
+</form>
+{% if error %}
+    <h2>{{ error }}</h2>
+{% endif %}
+<a href="{% url 'flights:index' %}">View Flights</a><br>
+<a href="{% url 'flights:search' %}">Search Flights Details</a>
+{% endblock %}
