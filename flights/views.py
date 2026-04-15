@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from .forms import FlightDetails,SearchDetails,PassengerForm
 
-# Create your views here.
+# Create your views here only.
 
 def index(request):
     flights = Flight.objects.all()
